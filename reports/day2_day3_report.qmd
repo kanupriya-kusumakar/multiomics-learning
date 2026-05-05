@@ -1,0 +1,41 @@
+---
+
+---
+
+---
+title: "Multiomics Learning — Days 2 & 3"
+author: "Kanupriya"
+date: today
+format: html
+---
+
+## Setup
+
+```{r}
+#| message: false
+library(tidyverse)
+library(palmerpenguins)
+library(patchwork)
+library(here)
+```
+
+## Day 2 — Data wrangling summary
+
+```{r}
+penguins |>
+  group_by(species, sex) |>
+  summarise(
+    mean_mass = mean(body_mass_g, na.rm = TRUE),
+    n = n(),
+    .groups = "drop"
+  )
+```
+
+## Day 3 — Publication figures
+
+```{r}
+#| fig-width: 10
+#| fig-height: 5
+#| warning: false
+knitr::include_graphics(here("outputs", "figures", "combined_day3.png"))
+```
